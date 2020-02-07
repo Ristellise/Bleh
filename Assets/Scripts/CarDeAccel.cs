@@ -13,7 +13,7 @@ public class CarDeAccel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void FixedUpdate()
     {
-        if (isPressed)
+        if (isPressed && !GlobalSwitchState.isPaused)
             GlobalSwitchState.rb.velocity += GlobalSwitchState.car.transform.forward * -1.0f;
     }
 

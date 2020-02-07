@@ -8,11 +8,11 @@ public class SceneManagement : MonoBehaviour
     private int currentScene;
     private int lastScene;
     private bool sceneTransition;
-
     // Start is called before the first frame update
+    public GameObject pauseCanvas;
     void Start()
     {
-
+        Debug.Log(pauseCanvas);
     }
 
     // Update is called once per frame
@@ -40,6 +40,7 @@ public class SceneManagement : MonoBehaviour
 
     public void ToOptions2()
     {
+        GlobalSwitchState.isPaused = false;
         SceneManager.LoadScene("Options2");
     }
 
@@ -53,17 +54,39 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene("InGame");
     }
 
-    public void ToPauseMenu()
+    public void ToGarageSelect()
     {
-        SceneManager.LoadScene("PauseMenu");
+        SceneManager.LoadScene("GarageSelect");
+    }
+
+    public void iPause()
+    {
+        if (pauseCanvas.activeInHierarchy)
+        {
+            GlobalSwitchState.isPaused = false;
+            pauseCanvas.SetActive(false);
+        }
+        else
+        {
+            GlobalSwitchState.isPaused = true;
+            pauseCanvas.SetActive(true);
+        }
+            
+    }
+
+    public void ToCarSelect()
+    {
+        SceneManager.LoadScene("CarSelect");
     }
 
     public void ToExitGame()
     {
-        //Application.Quit();
+        
 
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
         #endif
     }
 }

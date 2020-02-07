@@ -83,7 +83,6 @@
     <Compile Include="Assets\Scripts\SceneTransition.cs" />
     <Compile Include="Assets\Scripts\SliderText.cs" />
     <Compile Include="Assets\Scripts\SphereFollower.cs" />
-    <Compile Include="Assets\Scripts\Switching.cs" />
     <None Include="Assets\cel.hlsl" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\Racing Cars\Skybox\readme.txt" />

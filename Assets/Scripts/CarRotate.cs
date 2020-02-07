@@ -45,16 +45,43 @@ public static class DeviceRotation
 
 public class CarRotate : MonoBehaviour
 {
+    public float rot = 0.0F;
+
+    float GetAngleByDeviceAxis(Vector3 axis)
+    {
+        Quaternion deviceRotation = DeviceRotation.Get();
+        Quaternion eliminationOfOthers = Quaternion.Inverse(
+            Quaternion.FromToRotation(axis, deviceRotation * axis)
+        );
+        Vector3 filteredEuler = (eliminationOfOthers * deviceRotation).eulerAngles;
+
+        float result = filteredEuler.z;
+        if (axis == Vector3.up)
+        {
+            result = filteredEuler.y;
+        }
+        if (axis == Vector3.right)
+        {
+            // incorporate different euler representations.
+            result = (filteredEuler.y > 90 && filteredEuler.y < 270) ? 180 - filteredEuler.x : filteredEuler.x;
+        }
+        return result;
+    }
+
     public void FixedUpdate()
     {
-        Quaternion referenceRotation = Quaternion.identity;
-        Quaternion deviceRotation = DeviceRotation.Get();
-        Quaternion eliminationOfXY = Quaternion.Inverse(
-            Quaternion.FromToRotation(referenceRotation * Vector3.forward,
-                                      deviceRotation * Vector3.forward)
-        );
-        Quaternion rotationZ = eliminationOfXY * deviceRotation;
-        float roll = rotationZ.eulerAngles.z;
-        Debug.Log(roll);
+        if (!GlobalSwitchState.isPaused)
+        {
+            
+            float roll = GetAngleByDeviceAxis(Vector3.forward);
+            if (roll > 180.0f)
+                roll = -(360 - roll);
+            rot += roll/360.0f;
+
+            if (rot > 0.0F || rot < 0.0F)
+                GlobalSwitchState.rb.MoveRotation(GlobalSwitchState.rb.rotation * Quaternion.Euler(0, rot, 0));
+            rot = (Mathf.Lerp(rot, 0.0F, Time.fixedDeltaTime) * GlobalSwitchState.rb.mass) / 1.25f;
+            //Debug.Log(roll);
+        }
     }
 }

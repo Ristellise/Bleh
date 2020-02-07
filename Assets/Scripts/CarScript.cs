@@ -14,7 +14,7 @@ public class CarScript : MonoBehaviour
     {
         GlobalSwitchState.car = gameObject;
         GlobalSwitchState.rb = GetComponent<Rigidbody>();
-        SphereFollower sp = (SphereFollower)gameObject.transform.parent.Find("Sphere").gameObject.GetComponent(Type.GetType("SphereFollower"));
+        SphereFollower sp = (SphereFollower)gameObject.transform.Find("/Sphere").gameObject.GetComponent(Type.GetType("SphereFollower"));
         Debug.Log(sp);
         sp.setLeader(gameObject.transform);
     }
@@ -32,7 +32,9 @@ public class CarScript : MonoBehaviour
         
         float Horizontal = Input.GetAxis("Horizontal");
         float Vertical = Input.GetAxis("Vertical");
-
+        //Debug.Log(GlobalSwitchState.isPaused);
+        if (GlobalSwitchState.isPaused)
+            return;
         if (Input.GetKey("w") || Input.GetKey("s"))
         {
             GlobalSwitchState.rb.velocity += GlobalSwitchState.car.transform.forward * Vertical;
@@ -42,8 +44,6 @@ public class CarScript : MonoBehaviour
             rot += Horizontal;
             //velocity += transform.right * -speed;
         }
-        Debug.Log(rot);
-        Debug.Log(GlobalSwitchState.rb.rotation);
 
         if (rot > 0.0F || rot < 0.0F)
             GlobalSwitchState.rb.MoveRotation(GlobalSwitchState.rb.rotation * Quaternion.Euler(0, rot, 0));
