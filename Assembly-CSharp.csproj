@@ -88,6 +88,7 @@
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\Racing Cars\Skybox\readme.txt" />
     <None Include="Assets\V.shader" />
+    <None Include="Assets\Marcos Schultz\MS Sposts Car\License.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/UnityProjects/UIBoi/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

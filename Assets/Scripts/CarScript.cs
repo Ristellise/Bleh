@@ -35,13 +35,16 @@ public class CarScript : MonoBehaviour
 
         if (Input.GetKey("w") || Input.GetKey("s"))
         {
-            GlobalSwitchState.rb.velocity += transform.forward * Vertical;
+            GlobalSwitchState.rb.velocity += GlobalSwitchState.car.transform.forward * Vertical;
         }
         if (Input.GetKey("a") || Input.GetKey("d"))
         {
             rot += Horizontal;
             //velocity += transform.right * -speed;
         }
+        Debug.Log(rot);
+        Debug.Log(GlobalSwitchState.rb.rotation);
+
         if (rot > 0.0F || rot < 0.0F)
             GlobalSwitchState.rb.MoveRotation(GlobalSwitchState.rb.rotation * Quaternion.Euler(0, rot, 0));
         rot = (Mathf.Lerp(rot, 0.0F, Time.fixedDeltaTime) * GlobalSwitchState.rb.mass) / rotDrag;
