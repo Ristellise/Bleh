@@ -63,10 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CarAccel.cs" />
-    <Compile Include="Assets\CarDeAccel.cs" />
-    <Compile Include="Assets\CarRotate.cs" />
-    <Compile Include="Assets\CarScript.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
@@ -74,10 +70,20 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\GarageSelect.cs" />
-    <Compile Include="Assets\GlobalSwitchState.cs" />
-    <Compile Include="Assets\SphereFollower.cs" />
-    <Compile Include="Assets\Switching.cs" />
+    <Compile Include="Assets\Marcos Schultz\MS Sposts Car\Others\PromotionalMSVS.cs" />
+    <Compile Include="Assets\Marcos Schultz\MS Sposts Car\Others\WheelMeshes.cs" />
+    <Compile Include="Assets\Scripts\CarAccel.cs" />
+    <Compile Include="Assets\Scripts\CarDeAccel.cs" />
+    <Compile Include="Assets\Scripts\CarRotate.cs" />
+    <Compile Include="Assets\Scripts\CarScript.cs" />
+    <Compile Include="Assets\Scripts\GarageSelect.cs" />
+    <Compile Include="Assets\Scripts\GlobalSwitchState.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\SceneManagement.cs" />
+    <Compile Include="Assets\Scripts\SceneTransition.cs" />
+    <Compile Include="Assets\Scripts\SliderText.cs" />
+    <Compile Include="Assets\Scripts\SphereFollower.cs" />
+    <Compile Include="Assets\Scripts\Switching.cs" />
     <None Include="Assets\cel.hlsl" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\Racing Cars\Skybox\readme.txt" />
